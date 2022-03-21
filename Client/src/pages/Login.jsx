@@ -4,6 +4,7 @@ import { login } from "../redux/apiCalls";
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -11,7 +12,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+    url("https://images.unsplash.com/photo-1574713600544-ca13b5d573d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80")
       center;
   background-size: cover;
   display: flex;
@@ -66,13 +67,15 @@ const Link = styled.a`
 
 const Error = styled.span`
   color: red;
-`;
+`
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const {isFetching, error} = useSelector((state) => state.user)
+
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -92,12 +95,13 @@ const Login = () => {
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleClick} disabled={isFetching}>
+          <Button onClick={handleClick} disabled = {isFetching}>
             LOGIN
           </Button>
-          {error && <Error>Something went wrong...</Error>}
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          {error &&<Error>Username or Password incorrect
+          </Error>}
+          <Link>DO YOU NOT REMEMBER THE PASSWORD?</Link>
+          <Link to= "/register">CREATE A NEW ACCOUNT</Link>
         </Form>
       </Wrapper>
     </Container>

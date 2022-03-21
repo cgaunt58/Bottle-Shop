@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router";
 import { useState } from "react";
+import slider from "../components/Slider"
+
 
 const Container = styled.div``;
 
@@ -39,6 +41,7 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const ProductList = () => {
+  const [product, setProduct] = useState({});
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
   const [filters, setFilters] = useState({});
@@ -62,13 +65,14 @@ const ProductList = () => {
         <Filter>
           <FilterText>Sort Products:</FilterText>
           <Select onChange={(e) => setSort(e.target.value)}>
-            <Option value="newest">Newest</Option>
             <Option value="asc">Price (asc)</Option>
             <Option value="desc">Price (desc)</Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Products cat={cat} filters={filters} sort={sort} />
+      <Products cat={cat} filters={filters} sort={sort}>
+        <Title>{product.title}</Title>
+      </Products>  
       <Newsletter />
       <Footer />
     </Container>

@@ -75,7 +75,7 @@ const Footer = () => {
       <Left>
         <Logo>Bottle Shop</Logo>
         <Desc>
-          Looking for something for a celebration or special moment? Look no further the Bottle Shopp has all your needs covered.
+          Looking for something to celebrate that special moment? Look no further the Bottle Shop has all your needs covered.
         </Desc>
         <SocialContainer>
           <SocialIcon color="3B5999">

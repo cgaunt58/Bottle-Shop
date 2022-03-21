@@ -1,4 +1,4 @@
-import { Add, Remove } from "@material-ui/icons";
+
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
@@ -9,6 +9,8 @@ import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { useHistory } from "react-router";
+
+
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -127,20 +129,16 @@ const Button = styled.button`
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
+  const [product, setProduct] = useState({})
   const [quantity, setQuantity] = useState(1);
   const history = useHistory();
+ 
 
   const onToken = (token) => {
     setStripeToken(token);
   };
   
-  const handleQuantity = (type) => {
-    if (type === "dec") {
-      quantity > 1 && setQuantity(quantity - 1);
-    } else {
-      setQuantity(quantity + 1);
-    }
-  };
+  
 
   useEffect(() => {
     const makeRequest = async () => {
@@ -176,9 +174,9 @@ const Cart = () => {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <Add onClick={() => handleQuantity("inc")} /> 
-                    <ProductAmount>{product.quantity}</ProductAmount>
-                    <Remove onClick={() => handleQuantity("dec")} />
+                  
+                    <ProductAmount>{quantity}</ProductAmount>
+              
                   </ProductAmountContainer>
                   <ProductPrice>
                     $ {product.price * product.quantity}

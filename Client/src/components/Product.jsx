@@ -6,6 +6,7 @@ import {
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+
 const Info = styled.div`
   opacity: 0;
   width: 100%;
@@ -37,13 +38,6 @@ const Container = styled.div`
   }
 `;
 
-const Circle = styled.div`
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-`;
 
 const Image = styled.img`
   height: 75%;
@@ -66,12 +60,17 @@ const Icon = styled.div`
   }
 `;
 
+
+
 const Product = ({ item }) => {
   return (
     <Container>
-      <Circle />
+  
+
       <Image src={item.img} />
-      <Info>
+    
+
+       <Info>
         <Icon>
           <ShoppingCartOutlined />
         </Icon>
@@ -81,6 +80,7 @@ const Product = ({ item }) => {
           </Link>
         </Icon>
         <Icon>
+       
           <FavoriteBorderOutlined />
         </Icon>
       </Info>
